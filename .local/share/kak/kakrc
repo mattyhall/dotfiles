@@ -48,6 +48,7 @@ evaluate-commands %sh{
     fi
 }
 
+add-highlighter global/ number-lines
 
 
 
