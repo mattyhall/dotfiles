@@ -1,0 +1,9 @@
+[/]
+foreground-color='#9494A3A3A5A5'
+visible-name='Darker Dracula'
+palette=['rgb(40,42,54)', 'rgb(224,59,59)', 'rgb(80,250,123)', 'rgb(255,184,108)', 'rgb(139,233,253)', 'rgb(189,147,249)', 'rgb(255,121,198)', 'rgb(148,163,165)', 'rgb(0,0,0)', 'rgb(255,85,85)', 'rgb(80,250,123)', 'rgb(255,184,108)', 'rgb(139,233,253)', 'rgb(189,147,249)', 'rgb(255,121,198)', 'rgb(255,255,255)']
+use-theme-colors=false
+use-theme-background=false
+bold-color-same-as-fg=true
+bold-color='#9494A3A3A5A5'
+background-color='rgb(48,48,48)'
