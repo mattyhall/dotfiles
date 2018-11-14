@@ -31,7 +31,7 @@ evaluate-commands %sh{
             | sed 's/.*/try %{ source "&" } catch %{ echo -debug Autoload: could not load "&" }/'
     }
 
-    echo "colorscheme default"
+    echo "colorscheme dracula"
 
     if [ -d "${kak_config}/autoload" ]; then
         autoload_directory ${kak_config}/autoload
@@ -50,16 +50,14 @@ evaluate-commands %sh{
 
 add-highlighter global/ number-lines
 
-
+map global normal <c-f> ': grep '
+set global grepcmd 'rg --column'
 
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug andreyorst/fzf.kak config %{
     map global normal <c-p> ': fzf-mode<ret>'
-    set-option global fzf_tmux_height_file_preview '30%'
+    set-option global fzf_tmux_height_file_preview '50%'
     set-option global fzf_tmux_height '30%'
 }
 
-
-
 eval %sh{kak-lsp --kakoune -s $kak_session}
-
