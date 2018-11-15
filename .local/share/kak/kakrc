@@ -50,6 +50,9 @@ evaluate-commands %sh{
 
 add-highlighter global/ number-lines
 
+map global normal <#> ': comment-line<ret>'
+map global normal <a-#> ': comment-block<ret>'
+
 map global normal <c-f> ': grep '
 set global grepcmd 'rg --column'
 
