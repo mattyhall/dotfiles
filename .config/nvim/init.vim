@@ -42,6 +42,9 @@ let mapleader=" "
 map <leader>p :Files<CR>
 map <leader>f :Rg<CR>
 
+nnoremap gf <c-i>
+nnoremap gb <c-o>
+
 set number
 
 " Comment
