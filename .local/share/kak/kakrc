@@ -61,19 +61,20 @@ plug andreyorst/fzf.kak config %{
     map global normal <c-p> ': fzf-mode<ret>'
     set-option global fzf_tmux_height_file_preview '50%'
     set-option global fzf_tmux_height '30%'
+    set-option global fzf_highlighter 'bat'
 }
 
 eval %sh{kak-lsp --kakoune -s $kak_session}
 
 
 hook global InsertCompletionShow .* %{
-        try %{
-                    exec -draft 'h<a-K>\h<ret>'
-                            map window insert <s-tab> <c-p>
-                                    map window insert <tab> <c-n>
-        }
+    try %{
+        exec -draft 'h<a-K>\h<ret>'
+        map window insert <s-tab> <c-p>
+        map window insert <tab> <c-n>
+    }
 }
 hook global InsertCompletionHide .* %{
-        unmap window insert <tab> <c-n>
-            unmap window insert <s-tab> <c-p>
+    unmap window insert <tab> <c-n>
+    unmap window insert <s-tab> <c-p>
 }
