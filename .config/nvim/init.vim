@@ -2,8 +2,8 @@
 " Plugins
 call plug#begin()
 Plug 'tpope/vim-sleuth'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline' 
+Plug 'vim-airline/vim-airline-themes' 
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
@@ -16,6 +16,7 @@ Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 
@@ -44,6 +45,7 @@ map <leader>f :Rg<CR>
 
 nnoremap gf <c-i>
 nnoremap gb <c-o>
+nnoremap gt <c-]>
 
 set number
 
@@ -60,3 +62,11 @@ nnoremap <silent> <leader>d :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 nnoremap <silent> <leader>r :call LanguageClient#textDocument_references()<CR>
 map <leader>s :call LanguageClient#workspace_symbol()<CR>
+
+" Fix for rg not working???
+let g:airline#extensions#branch#enabled = 0
+
+" Terminal mode escape
+tnoremap <Esc> <C-\><C-n>
+
+set mouse=a
