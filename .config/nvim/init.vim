@@ -13,6 +13,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'rust-lang/rust.vim'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 
@@ -75,3 +76,12 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+augroup secure_modeline_conflict_workaround
+  autocmd!
+  autocmd FileType help setlocal nomodeline
+augroup END
+
+set diffopt+=vertical
+
+let g:airline#extensions#gutentags#enabled = 1
