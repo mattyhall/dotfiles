@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	urxvt
+	alacritty
 
 # program launcher
 super + @space
@@ -122,3 +122,19 @@ super + {Left,Down,Up,Right}
 
 super + alt + r
 	bspc node @/ -R 90
+
+super + slash
+	sxhkd-help
+
+# clipboad manager
+alt + v
+    CM_LAUNCHER=rofi clipmenu \
+        -location 1 \
+        -m -3 \
+        -no-show-icons \
+        -theme-str 'listview \{ spacing: 0; \}' \
+        -theme-str 'window \{ width: 20em; \}'
+
+# lock screen
+alt + l
+    betterlockscreen -l dim

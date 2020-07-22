@@ -5,15 +5,15 @@ Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline' 
 Plug 'vim-airline/vim-airline-themes' 
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug '~/.fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'rust-lang/rust.vim'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'peterhoeg/vim-qml'
 call plug#end()
 
 
