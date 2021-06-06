@@ -1,0 +1,67 @@
+# Additional requirements:
+# * kak-lsp: https://github.com/kak-lsp/kak-lsp
+# * kak-gdb: https://github.com/occivink/kakoune-gdb
+
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
+source "%val{config}/gdb.kak"
+
+# Plugins
+plug "andreyorst/plug.kak" noload
+plug "andreyorst/fzf.kak"
+plug "andreyorst/smarttab.kak"
+plug "andreyorst/powerline.kak" defer powerline %{
+  powerline-format global 'git bufname filetype line_column position'
+} config %{
+  powerline-start
+}
+
+
+# Config
+add-highlighter global/ number-lines -hlcursor
+map global normal <c-p> ': fzf-mode<ret>'
+
+## space is my leader
+map global normal <space> , -docstring 'leader'
+map global normal <backspace> <space> -docstring 'remove all sels except main'
+map global normal <a-backspace> <a-space> -docstring 'remove main sel'
+
+## FZF
+map global user p ': fzf-mode<ret>v' -docstring "find files"
+map global user b ': fzf-mode<ret>b' -docstring "find buffers"
+
+## LSP
+eval %sh{kak-lsp --kakoune -s $kak_session}
+lsp-enable
+map global user l %{: enter-user-mode lsp<ret>} -docstring "LSP mode"
+
+## Tab completion
+hook global InsertCompletionShow .* %{
+  try %{
+    exec -draft 'h<a-K>\h<ret>'
+    map window insert <s-tab> <c-p>
+    map window insert <tab> <c-n>
+  }
+}
+hook global InsertCompletionHide .* %{
+  unmap window insert <tab> <c-n>
+  unmap window insert <s-tab> <c-p>
+}
+
+## Splits
+define-command -docstring "vsplit <filename>: open file in vertical tmux split" \
+vsplit -params 0.. -file-completion %{
+  tmux-terminal-vertical kak -c %val{session} %arg{@}
+}
+define-command -docstring "hsplit <filename>: open file in horizontal tmux split" \
+hsplit -params 0.. -file-completion %{
+  tmux-terminal-horizontal kak -c %val{session} %arg{@}
+}
+declare-user-mode splits
+map global normal <c-w> ':enter-user-mode<space>splits<ret>'
+map global splits s ':vsplit<ret>'
+map global splits v ':hsplit<ret>'
+map global splits c ':quit!<ret>'
+
+## Movement
+map global normal <c-e> vj
+map global normal <c-y> vk
