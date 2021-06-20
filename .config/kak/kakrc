@@ -7,7 +7,10 @@ source "%val{config}/gdb.kak"
 
 # Plugins
 plug "andreyorst/plug.kak" noload
-plug "andreyorst/fzf.kak"
+plug "andreyorst/fzf.kak" config %{
+ map global user p ': fzf-mode<ret>f' -docstring "find files"
+ map global user b ': fzf-mode<ret>b' -docstring "find buffers"
+}
 plug "andreyorst/smarttab.kak"
 plug "andreyorst/powerline.kak" defer powerline %{
   powerline-format global 'git bufname filetype line_column position'
@@ -17,17 +20,16 @@ plug "andreyorst/powerline.kak" defer powerline %{
 
 
 # Config
+colorscheme dracula-transparent
 add-highlighter global/ number-lines -hlcursor
-map global normal <c-p> ': fzf-mode<ret>'
+
+set-option global indentwidth 2
+
 
 ## space is my leader
 map global normal <space> , -docstring 'leader'
 map global normal <backspace> <space> -docstring 'remove all sels except main'
 map global normal <a-backspace> <a-space> -docstring 'remove main sel'
-
-## FZF
-map global user p ': fzf-mode<ret>v' -docstring "find files"
-map global user b ': fzf-mode<ret>b' -docstring "find buffers"
 
 ## LSP
 eval %sh{kak-lsp --kakoune -s $kak_session}
@@ -65,3 +67,16 @@ map global splits c ':quit!<ret>'
 ## Movement
 map global normal <c-e> vj
 map global normal <c-y> vk
+
+## GDB
+hook global GlobalSetOption gdb_started=true %{
+  map global normal <F10>   ': gdb-next<ret>'
+  map global normal <F11>   ': gdb-step<ret>'
+  map global normal <s-F11> ': gdb-finish<ret>'
+  map global normal <F9>    ': gdb-toggle-breakpoint<ret>'
+  map global normal <F5>    ': gdb-continue<ret>'
+}
+
+hook global GlobalSetOption gdb_started=true %{
+  map global normal <F9>    ': gdb-toggle-breakpoint<ret>'
+}
