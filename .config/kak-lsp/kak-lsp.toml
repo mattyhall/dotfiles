@@ -18,3 +18,8 @@ diagnostics.disabled = ["unresolved-proc-macro"]
 filetypes = ["cpp"]
 roots = ["compile_commands.json"]
 command = "clangd"
+
+[language.zig]
+filetypes = ["zig"]
+roots = ["build.zig"]
+command = "zls"
