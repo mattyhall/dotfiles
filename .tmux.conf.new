@@ -10,7 +10,7 @@ bind r source-file ~/.tmux.conf
 
 
 # history
-set -g history-limit 16384
+set -g history-limit 4096
 
 
 # allow terminal scrolling
@@ -31,6 +31,10 @@ unbind %
 
 # colon :
 bind : command-prompt
+
+# panes
+set -g pane-border-style fg=black
+set -g pane-active-border-style fg=brightred
 
 # moving between panes with vim movement keys
 bind h select-pane -L
@@ -96,7 +100,7 @@ set -g mode-style fg=colour196,bg=colour238,bold
 # The panes {
 
 set -g pane-border-style bg=colour236,bg=colour238
-set -g pane-active-border-style bg=colour236,fg=colour3
+set -g pane-active-border-style bg=colour236,fg=colour4
 
 # }
 # The statusbar {
