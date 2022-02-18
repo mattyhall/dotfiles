@@ -82,3 +82,7 @@ hook global GlobalSetOption gdb_started=true %{
 hook global GlobalSetOption gdb_started=true %{
   map global normal <F9>    ': gdb-toggle-breakpoint<ret>'
 }
+
+add-highlighter global/ column 50 default,rgb:44475a
+add-highlighter global/ column 72 default,rgb:44475a
+add-highlighter global/ column 120 default,rgb:44475a
