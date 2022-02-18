@@ -11,7 +11,12 @@ plug "andreyorst/fzf.kak" config %{
  map global user p ': fzf-mode<ret>f' -docstring "find files"
  map global user b ': fzf-mode<ret>b' -docstring "find buffers"
 }
-plug "andreyorst/smarttab.kak"
+plug "andreyorst/smarttab.kak" defer smarttab %{
+  set global tabstop 2
+  set global indentwidth 2
+} config %{
+  hook global WinSetOption filetype=go noexpandtab
+}
 plug "andreyorst/powerline.kak" defer powerline %{
   powerline-format global 'git bufname filetype line_column position'
 } config %{
@@ -22,9 +27,6 @@ plug "andreyorst/powerline.kak" defer powerline %{
 # Config
 colorscheme dracula-transparent
 add-highlighter global/ number-lines -hlcursor
-
-set-option global indentwidth 2
-
 
 ## space is my leader
 map global normal <space> , -docstring 'leader'
