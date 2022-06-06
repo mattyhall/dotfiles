@@ -8,8 +8,9 @@ source "%val{config}/gdb.kak"
 # Plugins
 plug "andreyorst/plug.kak" noload
 plug "andreyorst/fzf.kak" config %{
- map global user p ': fzf-mode<ret>f' -docstring "find files"
- map global user b ': fzf-mode<ret>b' -docstring "find buffers"
+ map global user <space> ': fzf-mode<ret>f' -docstring "find files"
+ map global user , ': fzf-mode<ret>b' -docstring "find buffers"
+ map global user / ': fzf-mode<ret>g' -docstring "grep"
 }
 plug "andreyorst/smarttab.kak" defer smarttab %{
   set global tabstop 2
@@ -36,7 +37,7 @@ map global normal <a-backspace> <a-space> -docstring 'remove main sel'
 ## LSP
 eval %sh{kak-lsp --kakoune -s $kak_session}
 lsp-enable
-map global user l %{: enter-user-mode lsp<ret>} -docstring "LSP mode"
+map global user c %{: enter-user-mode lsp<ret>} -docstring "LSP mode"
 
 ## Tab completion
 hook global InsertCompletionShow .* %{
