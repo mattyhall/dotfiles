@@ -2,6 +2,7 @@ theme = "ayu_dark"
 
 [editor]
 line-number = "relative"
+rulers = [80, 120]
 scrolloff = 0
 true-color = true
 
